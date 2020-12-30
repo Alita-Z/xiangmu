@@ -1,0 +1,25 @@
+项目目录结构：
+-------------common:通用工具包
+             -------entity:通用类
+             -------enums:枚举相关
+             -------exception:统一异常处理
+             -------http:请求统一使用okhttp3
+
+-------------dao:mybatis映射接口
+
+-------------model:mybatis映射实体
+
+-------------modular:具体的功能模块包
+             --------tx:腾讯相关
+                     ---wxapplets:微信对接小程序相关
+                     ---wxpay:微信支付相关
+                     ---im:im相关
+             --------ali:阿里相关
+                     ---alipay:支付相关
+                     ---alisend:短信对接相关
+
+
+resources:
+----------mapper:mybatis映射xml文件
+----------essential:项目文档
+----------application.properties:配置文件
