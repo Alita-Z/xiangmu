@@ -91,6 +91,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--         腾讯IM签名算法-->
+        <dependency>
+            <groupId>com.github.tencentyun</groupId>
+            <artifactId>tls-sig-api</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
