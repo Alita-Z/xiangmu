@@ -2,7 +2,7 @@ package com.example.hardcoredemo.modular.tx.im;
 
 import java.net.HttpURLConnection;
 
-public interface Service {
+public interface ImService {
 
     /**
      * 获取http连接

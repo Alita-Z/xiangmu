@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.*;
 
 @Slf4j
-public class ServiceImpl implements Service{
+public class ImServiceImpl implements Service{
 
 
 
@@ -47,22 +47,22 @@ public class ServiceImpl implements Service{
     private long expire;
 
     /**
-     *
+     * 创建群组的请求地址
      */
     private static final String creatGroupUrl = "https://console.tim.qq.com/v4/group_open_http_svc/create_group?sdkappid=";
 
     /**
-     *
+     * 增加群成员的请求地址
      */
     private static final String addGroupMembersUrl = "https://console.tim.qq.com/v4/im_open_login_svc/account_import?sdkappid=";
 
     /**
-     *
+     * 删除群成员的请求地址
      */
     private static final String deleteGroupMembersUrl = "https://console.tim.qq.com/v4/group_open_http_svc/delete_group_member?sdkappid=";
 
     /**
-     *
+     * 导入一个群成员的请求地址
      */
     private static final String importOneAccountUrl = "https://console.tim.qq.com/v4/im_open_login_svc/account_import?sdkappid=";
 
