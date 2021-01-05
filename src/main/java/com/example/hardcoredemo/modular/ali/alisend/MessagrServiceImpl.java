@@ -49,7 +49,9 @@ public class MessagrServiceImpl implements MessageService {
         //反射拿属性名称
         //这里除手机号除外，其余字段有几个添加几个参数，自行添加（根据自定义的模板code来添加）
         String[] filedName = Cutils.getFiledName(codeVo);
-        //相关参数
+        //多参数示例
+        //request.putQueryParameter("TemplateParam", "{\""+filedName[1]+"\":\""+codeVo.getTestCode1()+"\",\""+filedName[2]+"\":\""+codeVo.getTestCode2()+"\",\""+filedName[3]+"\":\""+codeVo.getTestCode3()+"\",\""+filedName[4]+"\":\""+codeVo.getTestCode4()+"\"}");
+        //单一参数示例
         request.setTemplateParam("{\""+filedName[1]+"\":\""+codeVo.getTestCode1()+"\"}");
         //不必修改
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);

@@ -16,12 +16,18 @@ public class CodeVo {
     private String testCode1;
 
     /**
-     * 测试字段1
+     * 测试字段2
      */
     private String testCode2;
 
     /**
-     * 测试字段1
+     * 测试字段3
      */
     private String testCode3;
+
+    /**
+     * 测试字段4
+     */
+    private String testCode4;
+
 }

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author Binary Wang
+ * @author yujia.sun
  */
 @Configuration
 @ConditionalOnClass(WxPayService.class)

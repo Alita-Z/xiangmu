@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * wxpay pay properties.
  *
- * @author Binary Wang
+ * @author yujia.sun
  */
 @Data
 @ConfigurationProperties(prefix = "weixin.pay")
