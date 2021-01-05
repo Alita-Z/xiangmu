@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.*;
 
 @Slf4j
-public class ImServiceImpl implements Service{
+public class ImServiceImpl implements ImService{
 
 
 

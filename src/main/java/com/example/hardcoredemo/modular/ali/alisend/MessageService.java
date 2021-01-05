@@ -9,12 +9,11 @@ public interface MessageService {
 
     /**
      * 发送验证码
-     * @param phoneNumber
-     * @param code
+     * @param codeVo 验证码Vo
      * @return
      * @throws ClientException
      */
-    SendSmsResponse sendVerifySms(String phoneNumber, String code) throws ClientException;
+    SendSmsResponse sendVerifySms(CodeVo codeVo) throws ClientException;
     
 
 }

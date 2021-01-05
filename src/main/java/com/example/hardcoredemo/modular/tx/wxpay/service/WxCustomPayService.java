@@ -1,14 +1,22 @@
 package com.example.hardcoredemo.modular.tx.wxpay.service;
 
-import com.example.hardcoredemo.modular.tx.wxpay.vo.WxPayVo;
+import com.example.hardcoredemo.modular.tx.wxpay.vo.WxJsapiPayVo;
+import com.example.hardcoredemo.modular.tx.wxpay.vo.WxNativePayVo;
 
 public interface WxCustomPayService {
 
     /**
-     * 微信支付
-     * @param WxPayVo
+     * 微信支付(JSAPI)
+     * @param wxJsapiPayVo
      * @return
      */
-    String WxPay(WxPayVo WxPayVo);
+    String WxJsapiPay(WxJsapiPayVo wxJsapiPayVo);
+
+    /**
+     * 微信支付(NATIVE)
+     * @param wxNativePayVo
+     * @return
+     */
+    String WxNativePay(WxNativePayVo wxNativePayVo);
 
 }

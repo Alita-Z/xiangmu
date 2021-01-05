@@ -5,10 +5,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 微信统一下单Vo
+ * 微信统一下单(Native)Vo
  */
 @Data
-public class WxPayVo {
+public class WxNativePayVo {
 
     /**
      * 客户订单号
@@ -19,16 +19,6 @@ public class WxPayVo {
      * 下单金额
      */
     private BigDecimal totalAmount;
-
-    /**
-     * openId
-     */
-    private String openId;
-
-    /**
-     * 来源0:未知、1:小程序、2：后台下单
-     */
-    private Integer source;
 
     /**
      * 商品标识

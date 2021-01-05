@@ -67,9 +67,12 @@ public class AliCustomRefundServiceImpl implements AliCustomRefundService {
         //设置请求参数
         AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
         AlipayTradeRefundModel model = new AlipayTradeRefundModel();
-        model.setOutTradeNo(aliRefundVO.getOutTradeNo());//商户订单号,64个字符以内、可包含字母、数字、下划线；需保证在商户端不重复
-        model.setRefundAmount(aliRefundVO.getRefundFee()); //退款金额
-        model.setOutRequestNo(aliRefundVO.getOutRefundNo());//标识一次退款请求，同一笔交易多次退款需要保证唯一。
+        //商户订单号,64个字符以内、可包含字母、数字、下划线；需保证在商户端不重复
+        model.setOutTradeNo(aliRefundVO.getOutTradeNo());
+        //退款金额
+        model.setRefundAmount(aliRefundVO.getRefundFee());
+        //标识一次退款请求，同一笔交易多次退款需要保证唯一。
+        model.setOutRequestNo(aliRefundVO.getOutRefundNo());
         alipayRequest.setBizModel(model);
         AlipayTradeRefundResponse execute;
         try {

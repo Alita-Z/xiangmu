@@ -82,9 +82,6 @@ public class AliCustomPayServiceImpl implements AliCustomPayService {
     public String AliPay(AliPayVo aliPayVo) {
         AlipayClient alipayClient = new DefaultAlipayClient(gatewayUrl, alAppId, merchantPrivateKey, format, charset, alipayPublicKey, signType);
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
-
-//        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-//        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         //设置回调函数地址
         request.setNotifyUrl(notifyUrl);
         //创建查询参数
@@ -95,6 +92,7 @@ public class AliCustomPayServiceImpl implements AliCustomPayService {
         model.setTotalAmount(String.valueOf(aliPayVo.getTotalAmount()));
         //设置主题
         try {
+            //解决中文标题乱码问题
             model.setSubject(new String(body.getBytes("iso8859-1"),"gb2312"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

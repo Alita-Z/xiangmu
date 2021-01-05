@@ -27,7 +27,7 @@ public class MessagrServiceImpl implements MessageService {
 
 
     @Override
-    public SendSmsResponse sendVerifySms(String phoneNumber, String code) throws ClientException {
+    public SendSmsResponse sendVerifySms(CodeVo codeVo) throws ClientException {
         //设置超时时间(不必修改)
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         //(不必修改)
@@ -41,13 +41,16 @@ public class MessagrServiceImpl implements MessageService {
         //组装请求对象(不必修改)
         SendSmsRequest request = new SendSmsRequest();
         //****处填写接收方的手机号码
-        request.setPhoneNumbers(phoneNumber);
+        request.setPhoneNumbers(codeVo.getPhoneNumber());
         //****填写已申请的短信签名
         request.setSignName(signName);
         //****填写获得的短信模版CODE
         request.setTemplateCode(verifyCode);
+        //反射拿属性名称
+        //这里除手机号除外，其余字段有几个添加几个参数，自行添加（根据自定义的模板code来添加）
+        String[] filedName = cUtils.getFiledName(codeVo);
         //相关参数
-        request.setTemplateParam("{\"code\":\""+code+"\"}");
+        request.setTemplateParam("{\""+filedName[1]+"\":\""+codeVo.getTestCode1()+"\"}");
         //不必修改
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
         return sendSmsResponse;
