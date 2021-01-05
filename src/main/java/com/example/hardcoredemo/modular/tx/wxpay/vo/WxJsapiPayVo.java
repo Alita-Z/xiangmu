@@ -25,7 +25,6 @@ public class WxJsapiPayVo {
      */
     private String openId;
 
-
     /**
      * 商品标识
      */
