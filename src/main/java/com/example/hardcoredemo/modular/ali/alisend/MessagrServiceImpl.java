@@ -48,7 +48,7 @@ public class MessagrServiceImpl implements MessageService {
         request.setTemplateCode(verifyCode);
         //反射拿属性名称
         //这里除手机号除外，其余字段有几个添加几个参数，自行添加（根据自定义的模板code来添加）
-        String[] filedName = cUtils.getFiledName(codeVo);
+        String[] filedName = Cutils.getFiledName(codeVo);
         //相关参数
         request.setTemplateParam("{\""+filedName[1]+"\":\""+codeVo.getTestCode1()+"\"}");
         //不必修改
