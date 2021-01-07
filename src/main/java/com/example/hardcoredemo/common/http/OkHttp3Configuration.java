@@ -61,7 +61,7 @@ public class OkHttp3Configuration {
                 // ssl
                 .sslSocketFactory(sslSocketFactory(), x509TrustManager())
                 // 失败后重试，默认true
-                .retryOnConnectionFailure(false)
+                .retryOnConnectionFailure(true)
                 // 连接池 默认是ConnectionPool的构造设置
                 .connectionPool(pool())
                 // 连接超时 默认 10秒

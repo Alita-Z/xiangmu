@@ -1,12 +1,15 @@
 package com.example.hardcoredemo.modular.tx.wxapplets;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.hardcoredemo.common.http.OkHttp3Util;
 import com.example.hardcoredemo.common.http.PostType;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -19,10 +22,12 @@ import java.security.*;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-
-public class ServeiceImpl implements Service{
+@Slf4j
+@Service
+public class AppletsServeiceImpl implements AppletsService {
 
     @Value("${weixin.appid}")
     private String appid;
@@ -55,6 +60,40 @@ public class ServeiceImpl implements Service{
 //        params.put("is_hyaline","");
         return OkHttp3Util.postStream("https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken,
                 JSON.toJSONString(params), PostType.JSON);
+    }
+
+    @Override
+    public void publishMessage(String openid, Map<String, Object> map, MessageType type) {
+        Map<String,Object> params = new HashMap<>();
+        String accessToken = getAccessToken();
+        if(StringUtils.isBlank(accessToken)){return;}
+        params.put("access_token",accessToken);
+        params.put("template_id",type.key);
+        params.put("data",map);
+        params.put("touser", openid);
+        String message = OkHttp3Util.post("https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=" + accessToken, JSON.toJSONString(params), PostType.JSON);
+        JSONObject userInfo = JSONObject.parseObject(message);
+        if(userInfo.get("errcode").toString().equals("43101")){
+            // todo 对该用户取消订阅发送
+        }
+    }
+
+    @Override
+    public void publishMessagePlus(List<String> openids, Map<String, Object> map, MessageType type) {
+        Map<String,Object> params = new HashMap<>();
+        String accessToken = getAccessToken();
+        if(StringUtils.isBlank(accessToken)){return;}
+        params.put("access_token",accessToken);
+        params.put("template_id",type.key);
+        params.put("data",map);
+        for(String openid : openids){
+            params.put("touser", openid);
+            String message = OkHttp3Util.post("https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=" + accessToken, JSON.toJSONString(params), PostType.JSON);
+            JSONObject userInfo = JSONObject.parseObject(message);
+            if(userInfo.get("errcode").toString().equals("43101")){
+                // todo 对该用户取消订阅发送
+            }
+        }
     }
 
     @Override

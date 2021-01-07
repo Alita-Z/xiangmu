@@ -1,8 +1,9 @@
 package com.example.hardcoredemo.modular.tx.wxapplets;
 
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
-public interface Service {
+public interface AppletsService {
 
     /**
      * 获取微信access_token
@@ -23,6 +24,14 @@ public interface Service {
      * @return 图片流的byte数组
      */
     byte[] getRQCode(String scene);
+
+    /**
+     * 消息推送
+     * openid 用户的微信openid
+     * map 拼接的模板数据
+     */
+    void publishMessage(String openid, Map<String, Object> map, MessageType type);
+    void publishMessagePlus(List<String> openids, Map<String, Object> map, MessageType type);
 
     /**
      * 解密微信用户信息

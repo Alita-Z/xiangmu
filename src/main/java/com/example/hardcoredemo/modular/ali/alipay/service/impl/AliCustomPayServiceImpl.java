@@ -12,10 +12,12 @@ import com.example.hardcoredemo.modular.ali.alipay.service.AliCustomPayService;
 import com.example.hardcoredemo.modular.ali.alipay.vo.AliPayVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 
 @Slf4j
+@Service
 public class AliCustomPayServiceImpl implements AliCustomPayService {
 
     /**

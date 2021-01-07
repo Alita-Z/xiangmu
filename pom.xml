@@ -97,6 +97,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!--腾讯IM签名算法-->
         <dependency>
             <groupId>com.github.tencentyun</groupId>
@@ -132,6 +137,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
         </dependency>
+
     </dependencies>
 
     <build>

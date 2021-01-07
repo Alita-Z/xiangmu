@@ -11,10 +11,12 @@ import com.github.binarywang.wxpay.service.WxPayService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Slf4j
+@Service
 public class WxCustomRefundServiceImpl implements WxCustomRefundService {
 
     @Autowired
