@@ -30,8 +30,8 @@ public interface AppletsService {
      * openid 用户的微信openid
      * map 拼接的模板数据
      */
-    void publishMessage(String openid, Map<String, Object> map, MessageType type);
-    void publishMessagePlus(List<String> openids, Map<String, Object> map, MessageType type);
+    void publishMessage(String openid, Map<String, MessageType.MessageValue> map, MessageType type);
+    void publishMessagePlus(List<String> openids, Map<String, MessageType.MessageValue> map, MessageType type);
 
     /**
      * 解密微信用户信息

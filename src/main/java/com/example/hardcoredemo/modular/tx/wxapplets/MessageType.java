@@ -20,19 +20,27 @@ public enum MessageType {
         this.desc = desc;
     }
 
-    public static Map<String, Object> formatPAY(String thing1, String amount2, String thing4){
-        Map<String, Object> dataMap = new HashMap<>();
-        dataMap.put("thing1",thing1);//商品名称
-        dataMap.put("amount2",amount2);//付款金额
-        dataMap.put("thing4",thing4);//温馨提示
+    public static Map<String, MessageValue> formatPAY(String thing1, String amount2, String thing4){
+        Map<String, MessageValue> dataMap = new HashMap<>();
+        dataMap.put("thing1",new MessageValue().setValue(thing1));//商品名称
+        dataMap.put("amount2",new MessageValue().setValue(amount2));//付款金额
+        dataMap.put("thing4",new MessageValue().setValue(thing4));//温馨提示
         return dataMap;
     }
 
-    public static Map<String, Object> formatPUSH(String thing1, String amount2, String thing4){
-        Map<String, Object> dataMap = new HashMap<>();
-        dataMap.put("thing1",thing1);//商品名称
-        dataMap.put("amount2",amount2);//付款金额
-        dataMap.put("thing4",thing4);//温馨提示
+    public static Map<String, MessageValue> formatPUSH(String thing1, String amount2, String thing4){
+        Map<String, MessageValue> dataMap = new HashMap<>();
+        dataMap.put("thing1",new MessageValue().setValue(thing1));//商品名称
+        dataMap.put("amount2",new MessageValue().setValue(amount2));//付款金额
+        dataMap.put("thing4",new MessageValue().setValue(thing4));//温馨提示
         return dataMap;
+    }
+
+    static class MessageValue {
+        private String value;
+        public MessageValue setValue(String value){
+            this.value = value;
+            return this;
+        }
     }
 }

@@ -63,11 +63,12 @@ public class AppletsServeiceImpl implements AppletsService {
     }
 
     @Override
-    public void publishMessage(String openid, Map<String, Object> map, MessageType type) {
+    public void publishMessage(String openid, Map<String, MessageType.MessageValue> map, MessageType type) {
         Map<String,Object> params = new HashMap<>();
         String accessToken = getAccessToken();
         if(StringUtils.isBlank(accessToken)){return;}
         params.put("access_token",accessToken);
+        params.put("page","/pages/index/login");//推送消息的小程序跳转页
         params.put("template_id",type.key);
         params.put("data",map);
         params.put("touser", openid);
@@ -79,11 +80,12 @@ public class AppletsServeiceImpl implements AppletsService {
     }
 
     @Override
-    public void publishMessagePlus(List<String> openids, Map<String, Object> map, MessageType type) {
+    public void publishMessagePlus(List<String> openids, Map<String, MessageType.MessageValue> map, MessageType type) {
         Map<String,Object> params = new HashMap<>();
         String accessToken = getAccessToken();
         if(StringUtils.isBlank(accessToken)){return;}
         params.put("access_token",accessToken);
+        params.put("page","/pages/index/login");//推送消息的小程序跳转页
         params.put("template_id",type.key);
         params.put("data",map);
         for(String openid : openids){
