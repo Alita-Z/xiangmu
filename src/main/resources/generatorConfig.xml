@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="D:\localRepository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar" />
+    <!--<classPathEntry location="D:\maven\LocalWarehouse\mysql\mysql-connector-java\8.0.21\mysql-connector-java-8.0.21.jar" />-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+        <!--<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>-->
+
+        <!--是否在代码中显示注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://101.200.145.17:3306/db_lezhi?"
+                        userId="root" password="533fdsfD343$4232DRer42343">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <!-- This property is used to specify whether MyBatis Generator should
+          force the use of java.math.BigDecimal for DECIMAL and NUMERIC fields, -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+        <!--生成pojo类存放位置-->
+        <javaModelGenerator targetPackage="com.example.hardcoredemo.model"
+                            targetProject="src/main/java" >
+            <property name="enableSubPackages" value="true" /><!-- 是否让schema作为包的后缀-->
+            <property name="trimStrings" value="true" /><!-- 从数据库返回的值是否清理前后空格-->
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置
+                   如果maven工程只是单独的一个工程,targetProject="src\main\java"
+                   如果maven工程师分模块的工程,targetPackage="所属的模块名称" eg:targetPackage="ecps-manager-mapper"
+        -->
+        <!--生成xml映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" /><!-- 是否让schema作为包的后缀-->
+        </sqlMapGenerator>
+        <!-- mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.hardcoredemo.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" /><!-- 是否让schema作为包的后缀-->
+        </javaClientGenerator>
+
+        <!--生成对应表及类名-->
+        <table tableName="lz_user" domainObjectName="LzUser">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <!--<table tableName="lz_pay_transaction" domainObjectName="LzPayTransaction">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_log" domainObjectName="LzLog">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_config" domainObjectName="LzConfig">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_cumulative_config" domainObjectName="LzCumulativeConfig">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_banner" domainObjectName="LzBanner">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_notice" domainObjectName="LzNotice">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_grade" domainObjectName="LzGrade">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_subject" domainObjectName="LzSubject">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_label" domainObjectName="LzLabel">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_coupon" domainObjectName="LzCoupon">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_assistant" domainObjectName="LzAssistant">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_school" domainObjectName="LzSchool">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_advice" domainObjectName="LzAdvice">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_advice_detail" domainObjectName="LzAdviceDetail">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_authority" domainObjectName="LzAuthority">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_authority_role" domainObjectName="LzAuthorityRole">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_role" domainObjectName="LzRole">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_role_teacher" domainObjectName="LzRoleTeacher">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_teacher" domainObjectName="LzTeacher">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_user" domainObjectName="LzUser">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_user_follow" domainObjectName="LzUserFollow">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_student" domainObjectName="LzStudent">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_student_achievement" domainObjectName="LzStudentAchievement">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_user_coupon" domainObjectName="LzUserCoupon">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_course" domainObjectName="LzCourse">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_course_assistant" domainObjectName="LzCourseAssistant">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_lesson" domainObjectName="LzLesson">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_lesson_student" domainObjectName="LzLessonStudent">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_course_order" domainObjectName="LzCourseOrder">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_assistant_order" domainObjectName="LzAssistantOrder">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_transaction" domainObjectName="LzTransaction">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_refund" domainObjectName="LzRefund">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_school_record" domainObjectName="LzSchoolRecord">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_teacher_record" domainObjectName="LzTeacherRecord">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_teacher_performance" domainObjectName="LzTeacherPerformance">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="lz_teacher_performance_detail" domainObjectName="LzTeacherPerformanceDetail">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+
+    </context>
+</generatorConfiguration>

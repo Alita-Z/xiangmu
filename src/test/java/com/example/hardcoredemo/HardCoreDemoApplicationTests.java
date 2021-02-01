@@ -1,5 +1,7 @@
 package com.example.hardcoredemo;
 
+import com.example.hardcoredemo.modular.disruptor.SeriesData;
+import com.example.hardcoredemo.modular.disruptor.SeriesDataEventQueueHelper;
 import com.example.hardcoredemo.modular.tx.wxapplets.MessageType;
 import com.example.hardcoredemo.modular.tx.wxapplets.AppletsService;
 import org.junit.jupiter.api.Test;
@@ -19,13 +21,17 @@ class HardCoreDemoApplicationTests {
     @Autowired
     AppletsService service;
 
+    @Autowired
+    private SeriesDataEventQueueHelper seriesDataEventQueueHelper;
+
     @Test
     void contextLoads() {
     }
 
     @Test
     void test(){
-        service.publishMessage("", MessageType.formatPAY("","",""), MessageType.PAY);
-        service.publishMessagePlus(new ArrayList<>(), MessageType.formatPAY("","",""), MessageType.PAY);
+//        service.publishMessage("", MessageType.formatPAY("","",""), MessageType.PAY);
+//        service.publishMessagePlus(new ArrayList<>(), MessageType.formatPAY("","",""), MessageType.PAY);
+        seriesDataEventQueueHelper.publishEvent(new SeriesData("111"));
     }
 }

@@ -22,7 +22,7 @@ public class AliCustomRefundServiceImpl implements AliCustomRefundService {
     /**
      * 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
      */
-    @Value("${zhifubao.appId}")
+    @Value("${ali.pay.appId}")
     private  String alAppId;
 
     /**

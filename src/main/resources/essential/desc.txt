@@ -23,3 +23,4 @@ resources:
 ----------mapper:mybatis映射xml文件
 ----------essential:项目文档
 ----------application.properties:配置文件
+----------application.yml:配置文件

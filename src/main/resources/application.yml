@@ -1,0 +1,85 @@
+ali:
+  pay:
+    alipayPublicKey: '*************************'
+    appId: '**********************'
+    body: '**************************'
+    charset: UTF-8
+    format: json
+    gatewayUrl: https://openapi.alipay.com/gateway.do
+    merchantPrivateKey: '***********************'
+    notifyUrl: '************************'
+    signType: RSA2
+    timeout: 5m
+  sms:
+    accessKeyId: '***************'
+    secret: '***************'
+    signName: '***************'
+    verifyCode: '*************'
+im:
+  expire: 604800
+  sdkAppId: 135798642
+  secretKey: '*********************'
+  userId: administrator
+weixin:
+  appid: wx*******************
+  pay:
+    appId: '***********************'
+    body: '*************************'
+    keyPath: '*********************'
+    mchId: '************************'
+    mchKey: '*************************'
+    notifyUrl: '********************'
+  refund:
+    notifyUrl: '*******************'
+  secret: '*************************'
+
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave
+      master:
+        url: jdbc:mysql://101.200.145.17:3306/db_lezhi?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&rewriteBatchedStatements=true&allowMultiQueries=true
+        username: root
+        password: 533fdsfD343$4232DRer42343
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+      slave:
+        url: jdbc:mysql://101.200.145.17:3306/db_lezhi?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&rewriteBatchedStatements=true&allowMultiQueries=true
+        username: root
+        password: 533fdsfD343$4232DRer42343
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+    props:
+      sql:
+        show: true
+      masterslave:
+        #        name: ms
+        load-balance-algorithm-type: round_robin
+      #        master-data-source-name: master
+      #        slave-data-source-names: slave
+    sharding:
+      tables:
+        lz_user:
+          actual-data-nodes: db_lezhi.lz_user #_$->{0..9}
+          table-strategy:
+            #              inline:
+            #                sharding-column: company_id
+            #                algorithm-expression: ex_collect_order_$->{company_id % 10}
+            complex:
+              sharding-columns: ctime
+              algorithm-class-name: com.example.hardcoredemo.common.sharding.CollectOrderTableShardingAlgorithm
+      master-slave-rules:
+        db_lezhi:
+          master-data-source-name: master
+          slave-data-source-names: slave
+
+apache:
+  rocketmq:
+    #消费者的配置
+    consumer:
+      pushConsumer: myConsumer
+    #生产者的配置
+    producer:
+      producerGroup: myGroup
+      namesrvAddr: 127.0.0.1:9876
+
