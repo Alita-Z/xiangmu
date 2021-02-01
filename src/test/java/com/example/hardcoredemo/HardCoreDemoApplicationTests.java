@@ -30,8 +30,14 @@ class HardCoreDemoApplicationTests {
 
     @Test
     void test(){
+        /**
+         * 微信消息推送
+         */
 //        service.publishMessage("", MessageType.formatPAY("","",""), MessageType.PAY);
 //        service.publishMessagePlus(new ArrayList<>(), MessageType.formatPAY("","",""), MessageType.PAY);
-        seriesDataEventQueueHelper.publishEvent(new SeriesData("111"));
+        /**
+         * disruptor
+         */
+//        seriesDataEventQueueHelper.publishEvent(new SeriesData("111"));
     }
 }

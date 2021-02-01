@@ -32,5 +32,4 @@ public class OrderCollectConsumer implements MessageListenerOrderly {
         }
         return ConsumeOrderlyStatus.SUCCESS;
     }
-
 }
