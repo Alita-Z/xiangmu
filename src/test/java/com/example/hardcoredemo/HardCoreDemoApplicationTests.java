@@ -12,6 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootTest(classes = HardCoreDemoApplication.class)
 @RunWith(SpringRunner.class)
@@ -30,6 +32,17 @@ class HardCoreDemoApplicationTests {
 
     @Test
     void test(){
+//        List<sun> list = new ArrayList<>();
+//        tesst(list);
+//        sun.excute();
+//        father father = new father();
+//        father.excute();
+        List list = new ArrayList();
+        list.add(new sun());
+        System.out.println(list);
+        System.out.println(list.stream().collect(Collectors.toList()));
+        sun sun = new sun();
+        sun.excute();
         /**
          * 微信消息推送
          */
@@ -39,5 +52,34 @@ class HardCoreDemoApplicationTests {
          * disruptor
          */
 //        seriesDataEventQueueHelper.publishEvent(new SeriesData("111"));
+    }
+
+    public static void main(String[] args) {
+        sun sun = new sun();
+        sun.excute();
+        father father = new father();
+        father.excute();
+    }
+
+    private void tesst(List<sun> list){
+        if(false){
+
+        }else {
+            tesstt(list);
+        }
+    }
+    private void tesstt(List<sun> list){
+        sun sun = new sun();
+        sun.name = "111";
+        List<sun> list1 = new ArrayList<>();
+        list1.add(sun);
+        list.addAll(list1);
+        list1.forEach(s -> {
+            s.name = "333";
+            father father = new father();
+            father.name = s.name;
+            s.list.add(father);
+        });
+        list.forEach(ss -> ss.name = "222");
     }
 }
