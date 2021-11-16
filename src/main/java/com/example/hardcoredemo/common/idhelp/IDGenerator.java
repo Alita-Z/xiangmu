@@ -1,4 +1,4 @@
-package com.example.hardcoredemo.common.utils;
+package com.example.hardcoredemo.common.idhelp;
 
 import java.io.Serializable;
 

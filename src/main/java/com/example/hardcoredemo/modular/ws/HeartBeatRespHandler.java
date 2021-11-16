@@ -1,21 +1,21 @@
 package com.example.hardcoredemo.modular.ws;
 
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 
-public class HeartBeatRespHandler extends SimpleChannelInboundHandler<LzUser> {
+public class HeartBeatRespHandler extends SimpleChannelInboundHandler<BdStaff> {
 
     /**
      * @see io.netty.channel.SimpleChannelInboundHandler#channelRead0(io.netty.channel.ChannelHandlerContext,
      *      java.lang.Object)
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LzUser msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, BdStaff msg) throws Exception {
         if (msg != null) {
-            LzUser user = new LzUser();
+            BdStaff user = new BdStaff();
             ctx.writeAndFlush(user);
         }
         else {

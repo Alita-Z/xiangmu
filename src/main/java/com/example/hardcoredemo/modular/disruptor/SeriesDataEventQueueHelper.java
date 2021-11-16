@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class SeriesDataEventQueueHelper extends BaseQueueHelper<SeriesData, SeriesDataEvent, SeriesDataEventHandler> implements InitializingBean {
 
     private static final int QUEUE_SIZE = 1024;

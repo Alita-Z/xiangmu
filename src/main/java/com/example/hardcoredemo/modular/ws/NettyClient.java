@@ -1,6 +1,6 @@
 package com.example.hardcoredemo.modular.ws;
 
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -57,8 +57,8 @@ public class NettyClient {
                 throws Exception {
             // -8表示lengthAdjustment，让解码器从0开始截取字节，并且包含消息头
             ch.pipeline()
-                    .addLast(new RpcEncoder(LzUser.class))
-                    .addLast(new RpcDecoder(LzUser.class))
+                    .addLast(new RpcEncoder(BdStaff.class))
+                    .addLast(new RpcDecoder(BdStaff.class))
                     .addLast(new IdleStateHandler(120, 10, 0, TimeUnit.SECONDS))
                     .addLast(new HeartBeatReqHandler());
         }

@@ -3,8 +3,8 @@ package com.example.hardcoredemo.common.sharding;
 import com.example.hardcoredemo.common.utils.DateUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shardingsphere.api.sharding.complex.ComplexKeysShardingAlgorithm;
-import org.apache.shardingsphere.api.sharding.complex.ComplexKeysShardingValue;
+import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingAlgorithm;
+import org.apache.shardingsphere.sharding.api.sharding.complex.ComplexKeysShardingValue;
 
 
 import java.text.SimpleDateFormat;
@@ -65,4 +65,23 @@ public class CollectOrderTableShardingAlgorithm implements ComplexKeysShardingAl
         return routTables;
     }
 
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    @Override
+    public Properties getProps() {
+        return null;
+    }
+
+    @Override
+    public void setProps(Properties props) {
+
+    }
 }

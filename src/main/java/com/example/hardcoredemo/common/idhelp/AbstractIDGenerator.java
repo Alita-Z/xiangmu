@@ -1,4 +1,6 @@
-package com.example.hardcoredemo.common.utils;
+package com.example.hardcoredemo.common.idhelp;
+
+import com.example.hardcoredemo.common.idhelp.IDGenerator;
 
 /**
  * id生成器抽象实现类

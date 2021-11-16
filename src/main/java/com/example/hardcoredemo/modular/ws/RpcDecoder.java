@@ -1,7 +1,7 @@
 package com.example.hardcoredemo.modular.ws;
 
 import com.alibaba.fastjson.JSON;
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -33,7 +33,7 @@ public class RpcDecoder extends ByteToMessageDecoder {
         byte[] data = new byte[dataLength];
         in.readBytes(data);
 
-        Object obj = JSON.parseObject(new String(data), LzUser.class);
+        Object obj = JSON.parseObject(new String(data), BdStaff.class);
         System.out.println("接收到的消息是：" + obj);
         out.add(obj);
     }

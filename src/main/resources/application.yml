@@ -35,43 +35,95 @@ weixin:
 
 spring:
   shardingsphere:
-    datasource:
-      names: master,slave
-      master:
-        url: jdbc:mysql://101.200.145.17:3306/db_lezhi?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&rewriteBatchedStatements=true&allowMultiQueries=true
-        username: root
-        password: 533fdsfD343$4232DRer42343
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.alibaba.druid.pool.DruidDataSource
-      slave:
-        url: jdbc:mysql://101.200.145.17:3306/db_lezhi?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&rewriteBatchedStatements=true&allowMultiQueries=true
-        username: root
-        password: 533fdsfD343$4232DRer42343
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.alibaba.druid.pool.DruidDataSource
     props:
       sql:
         show: true
-      masterslave:
-        #        name: ms
-        load-balance-algorithm-type: round_robin
-      #        master-data-source-name: master
-      #        slave-data-source-names: slave
-    sharding:
-      tables:
-        lz_user:
-          actual-data-nodes: db_lezhi.lz_user #_$->{0..9}
-          table-strategy:
-            #              inline:
-            #                sharding-column: company_id
-            #                algorithm-expression: ex_collect_order_$->{company_id % 10}
-            complex:
-              sharding-columns: ctime
-              algorithm-class-name: com.example.hardcoredemo.common.sharding.CollectOrderTableShardingAlgorithm
-      master-slave-rules:
-        db_lezhi:
-          master-data-source-name: master
-          slave-data-source-names: slave
+    datasource:
+      names: master,slave
+      common:
+#        url: jdbc:mysql://172.20.39.186:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+#        username: ro_all_db
+#        password: yonbip2021user!
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+      master:
+        url: jdbc:mysql://172.20.39.49:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: ro_all_db
+        password: yonbip2021user!
+        #driver-class-name: com.mysql.jdbc.Driver
+        #type: com.alibaba.druid.pool.DruidDataSource
+      slave:
+        url: jdbc:mysql://172.20.39.49:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: ro_all_db
+        password: yonbip2021user!
+        #driver-class-name: com.mysql.jdbc.Driver
+        #type: com.alibaba.druid.pool.DruidDataSource
+
+#　　1. spring.shardingsphere.rules : 规则配置
+#　　2. spring.shardingsphere.rules.sharding.sharding-algorithms : 分库分表规则配置
+#　　3. spring.shardingsphere.rules.sharding.tables : 分库分表对象配置
+#　　4. spring.shardingsphere.rules.sharding.key-generators : 分布式序列配置
+#　　5. spring.shardingsphere.rules.replica-query : 读写分离配置
+#　　6. spring.shardingsphere.rules.encrypt : 数据脱敏配置
+    rules:
+      sharding:
+        key-generators:
+          # 此处必须要配置，否则会导致报错，因为shardingsphere-jdbc-core-spring-boot-starter需要加载此项配置，官网的demo例子有错
+          snowflake:
+            type: SNOWFLAKE
+            props:
+              worker-id: 123
+              max-vibration-offset: 2048
+        sharding-algorithms:
+#          database_inline:
+#            type: INLINE
+#            props:
+#              algorithm-expression: iuap_apdoc_basedoc_${ts % 2}
+          table-inline:
+            type: INLINE
+            props:
+              algorithm-expression: bd_staff$->{id % 2}
+        tables:
+          bd_staff:
+            key-generate-strategy:
+              key-generator-name: snowflake
+              column: id
+            actual-data-nodes: master.bd_staff$->{0..1}
+            #数据库分片策略
+            #            database-strategy:
+            #              standard:
+            #                sharding-column: ts
+            #                sharding-algorithm-name: database_inline
+            table-strategy:
+              standard:
+                sharding-column: id
+                sharding-algorithm-name: table-inline
+      replica-query:
+        data-sources:
+          readwrite:
+            name: readwrite
+            primary-data-source-name: master
+            replica-data-source-names: slave
+        load-balancers:
+          balancers:
+            type: ROUND_ROBIN
+            #无用切必须要配置，不太友好
+            props:
+              value: value
+      encrypt:
+        tables:
+          bd_staff:
+            columns:
+              cert_no:
+                cipher-column: cert_no
+                encryptor-name: aesencrypt0
+                assisted-query-column: cert_no
+                plain-column: cert_no
+        encryptors:
+          aesencrypt0:
+            type: AES
+            props:
+              aes-key-value: '123'
 
 apache:
   rocketmq:
@@ -83,3 +135,6 @@ apache:
       producerGroup: myGroup
       namesrvAddr: 127.0.0.1:9876
 
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.example.hardcoredemo.dao

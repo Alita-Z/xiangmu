@@ -1,6 +1,6 @@
 package com.example.hardcoredemo.modular.ws;
 
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleState;
@@ -22,8 +22,8 @@ public class HeartBeatReqHandler extends ChannelDuplexHandler {
             }
             else if (event.state() == IdleState.WRITER_IDLE) {
                 System.out.println("Write  空闲");
-                LzUser msg = new LzUser();
-                msg.setId(1);
+                BdStaff msg = new BdStaff();
+                msg.setId("1");
                 ctx.writeAndFlush(msg);
             }
         }

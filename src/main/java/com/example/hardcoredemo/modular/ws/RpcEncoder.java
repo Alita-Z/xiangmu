@@ -1,7 +1,7 @@
 package com.example.hardcoredemo.modular.ws;
 
 import com.alibaba.fastjson.JSON;
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -19,7 +19,7 @@ public class RpcEncoder extends MessageToByteEncoder {
             throws Exception {
         if (genericClass.isInstance(in)) {
             System.out.println("发送的请求是：" + in);
-            LzUser user = (LzUser)in;
+            BdStaff user = (BdStaff)in;
             String userString = JSON.toJSONString(user);
             System.out.println(JSON.toJSONString(user));
             byte[] data = userString.getBytes();

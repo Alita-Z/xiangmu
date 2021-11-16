@@ -16,7 +16,7 @@ import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
-@Configuration
+//@Configuration
 public class OkHttp3Configuration {
     @Bean
     public X509TrustManager x509TrustManager() {

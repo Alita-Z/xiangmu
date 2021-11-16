@@ -1,4 +1,4 @@
-package com.example.hardcoredemo.common.utils;
+package com.example.hardcoredemo.common.idhelp;
 
 
 import lombok.extern.slf4j.Slf4j;

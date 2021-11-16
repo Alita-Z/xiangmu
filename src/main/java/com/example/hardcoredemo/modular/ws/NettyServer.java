@@ -1,6 +1,6 @@
 package com.example.hardcoredemo.modular.ws;
 
-import com.example.hardcoredemo.model.LzUser;
+import com.example.hardcoredemo.model.BdStaff;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,7 +11,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import org.springframework.web.HttpRequestHandler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,8 +42,8 @@ public class NettyServer {
         @Override
         protected void initChannel(final SocketChannel ch)
                 throws Exception {
-            ch.pipeline().addLast(new RpcDecoder(LzUser.class))
-                    .addLast(new RpcEncoder(LzUser.class))
+            ch.pipeline().addLast(new RpcDecoder(BdStaff.class))
+                    .addLast(new RpcEncoder(BdStaff.class))
                     .addLast(new IdleStateHandler(120, 0, 0, TimeUnit.SECONDS))
                     .addLast(new HeartBeatRespHandler())
                     .addLast(new WebSocketServerProtocolHandler("/ws"));

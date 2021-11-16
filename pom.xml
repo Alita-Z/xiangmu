@@ -67,37 +67,25 @@
         <!-- sharding  -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-core</artifactId>
-            <version>4.1.1</version>
+            <artifactId>shardingsphere-jdbc-core</artifactId>
+            <version>5.0.0-alpha</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.1.1</version>
+            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+            <version>5.0.0-alpha</version>
         </dependency>
-        <!-- 使用XA事务时，需要引入此模块 -->
+        <!-- import if using XA transaction -->
+<!--        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-transaction-xa-core</artifactId>
+            <version>5.0.0-alpha</version>
+        </dependency>
+        &lt;!&ndash; import if using BASE transaction &ndash;&gt;
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-transaction-xa-core</artifactId>
-            <version>4.1.1</version>
-        </dependency>
-        <!-- 使用BASE事务时，需要引入此模块 -->
-        <!--<dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-transaction-base-seata-at</artifactId>
-            <version>4.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-rm-datasource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-tm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-codec-all</artifactId>
+            <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+            <version>5.0.0-alpha</version>
         </dependency>-->
 
         <!-- pagehelper  -->

@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 @Slf4j
-@Component
+//@Component
 public class OkHttp3Util {
 
     private static OkHttpClient okHttpClient;

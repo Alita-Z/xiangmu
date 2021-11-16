@@ -1,6 +1,7 @@
 package com.example.hardcoredemo.modular.ali.alipay.controller;
 
 import com.alipay.api.internal.util.AlipaySignature;
+import com.example.hardcoredemo.common.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +14,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@RequestMapping
+@RequestMapping("/ali")
 @RestController
 @Slf4j
-public class AliPayController {
+public class AliPayController extends BaseController {
 
 
 

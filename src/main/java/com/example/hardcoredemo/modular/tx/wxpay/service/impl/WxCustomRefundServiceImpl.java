@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Service
 public class WxCustomRefundServiceImpl implements WxCustomRefundService {
 
-    @Autowired
+//    @Autowired
     WxPayService wxPayService;
 
     /**

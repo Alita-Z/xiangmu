@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 @Service
 public class WxCustomPayServiceImpl implements WxCustomPayService {
 
-    @Autowired
+//    @Autowired
     WxPayService wxPayService;
 
     /**

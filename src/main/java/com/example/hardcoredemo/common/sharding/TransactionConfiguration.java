@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 @EnableTransactionManagement
 public class TransactionConfiguration {
 

@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ class HardCoreDemoApplicationTests {
     @Autowired
     AppletsService service;
 
-    @Autowired
+//    @Autowired
     private SeriesDataEventQueueHelper seriesDataEventQueueHelper;
 
     @Test
@@ -37,12 +38,18 @@ class HardCoreDemoApplicationTests {
 //        sun.excute();
 //        father father = new father();
 //        father.excute();
-        List list = new ArrayList();
-        list.add(new sun());
+        List<sun> list = new ArrayList();
+        list.add(new sun());list.add(new sun());list.add(new sun());list.add(new sun());
         System.out.println(list);
-        System.out.println(list.stream().collect(Collectors.toList()));
-        sun sun = new sun();
-        sun.excute();
+        Iterator<sun> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            sun appConf = iterator.next();
+                iterator.remove();
+        }
+        System.out.println(list);
+//        System.out.println(list.stream().collect(Collectors.toList()));
+//        sun sun = new sun();
+//        sun.excute();
         /**
          * 微信消息推送
          */
@@ -55,10 +62,15 @@ class HardCoreDemoApplicationTests {
     }
 
     public static void main(String[] args) {
-        sun sun = new sun();
-        sun.excute();
-        father father = new father();
-        father.excute();
+        List<sun> list = new ArrayList();
+        list.add(new sun());list.add(new sun());list.add(new sun());list.add(new sun());
+        System.out.println(list);
+        Iterator<sun> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            sun appConf = iterator.next();
+            iterator.remove();
+        }
+        System.out.println(list);
     }
 
     private void tesst(List<sun> list){

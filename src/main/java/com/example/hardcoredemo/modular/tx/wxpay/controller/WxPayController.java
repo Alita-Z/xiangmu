@@ -1,6 +1,8 @@
 package com.example.hardcoredemo.modular.tx.wxpay.controller;
 
 import com.alipay.api.internal.util.file.IOUtils;
+import com.example.hardcoredemo.common.base.BaseController;
+import com.example.hardcoredemo.common.base.ParentBaseController;
 import com.example.hardcoredemo.modular.tx.wxpay.utils.BeanUtil;
 import com.example.hardcoredemo.modular.tx.wxpay.utils.XmlUtil;
 import com.github.binarywang.wxpay.bean.notify.WxPayNotifyResponse;
@@ -19,12 +21,12 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/wx")
 @Slf4j
-public class WxPayController {
+public class WxPayController extends ParentBaseController {
 
 
-    @Autowired
+//    @Autowired
     WxPayService wxPayService;
 
     /**

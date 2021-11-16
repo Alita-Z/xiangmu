@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author yujia.sun
  */
 @Data
-@ConfigurationProperties(prefix = "weixin.pay")
+//@ConfigurationProperties(prefix = "weixin.pay")
 public class WxPayProperties {
   /**
    * 设置微信公众号或者小程序等的appid

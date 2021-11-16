@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author yujia.sun
  */
-@Configuration
+//@Configuration
 @ConditionalOnClass(WxPayService.class)
 @EnableConfigurationProperties(WxPayProperties.class)
 @AllArgsConstructor
