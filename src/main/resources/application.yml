@@ -47,15 +47,15 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
       master:
-        url: jdbc:mysql://172.20.39.49:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
-        username: ro_all_db
-        password: yonbip2021user!
+        url: jdbc:mysql://***/***?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: user*****
+        password: pass****
         #driver-class-name: com.mysql.jdbc.Driver
         #type: com.alibaba.druid.pool.DruidDataSource
       slave:
-        url: jdbc:mysql://172.20.39.49:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
-        username: ro_all_db
-        password: yonbip2021user!
+        url: jdbc:mysql://***/***?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: user****
+        password: pass****
         #driver-class-name: com.mysql.jdbc.Driver
         #type: com.alibaba.druid.pool.DruidDataSource
 
