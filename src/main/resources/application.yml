@@ -41,21 +41,21 @@ spring:
     datasource:
       names: master,slave
       common:
-#        url: jdbc:mysql://172.20.39.186:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+#        url: jdbc:mysql://172.0.0.0:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
 #        username: ro_all_db
 #        password: yonbip2021user!
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
       master:
-        url: jdbc:mysql://***/***?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
-        username: user*****
-        password: pass****
+        url: jdbc:mysql://172.0.0.0:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: ro_all_db
+        password: yonbip2021user!
         #driver-class-name: com.mysql.jdbc.Driver
         #type: com.alibaba.druid.pool.DruidDataSource
       slave:
-        url: jdbc:mysql://***/***?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
-        username: user****
-        password: pass****
+        url: jdbc:mysql://172.0.0.0:3306/iuap_apdoc_basedoc?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai
+        username: ro_all_db
+        password: yonbip2021user!
         #driver-class-name: com.mysql.jdbc.Driver
         #type: com.alibaba.druid.pool.DruidDataSource
 
