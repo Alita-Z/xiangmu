@@ -8,7 +8,12 @@ import com.example.hardcoredemo.modular.cognitive.service.RuleService;
 import com.example.hardcoredemo.modular.cognitive.service.TypeService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
+@Service
 public class WhatServiceImpl implements WhatInterface {
 
     @Autowired
@@ -33,8 +38,8 @@ public class WhatServiceImpl implements WhatInterface {
 
     @SneakyThrows
     private RuleParser what0(Object case1, Object result2) {
-        Object result0 = charParser.find(case1.toString());
-        Object result1 = charParser.find(result2.toString());
+        List<Map<String, Object>> result0 = charParser.find(case1.toString());
+        List<Map<String, Object>> result1 = charParser.find(result2.toString());
         //生成rule逻辑
         Object resultRule = ruleParser.getRule(result0, result1);
         //保存rule逻辑

@@ -4,6 +4,7 @@
              -------enums:枚举相关
              -------exception:统一异常处理
              -------http:请求统一使用okhttp3
+             -------idhelp:id生成工具
              -------protobuf:序列化工具
              -------sharding:shardingJDBC
              -------utils:工具包
@@ -23,6 +24,7 @@
                      ---rocketmq:rocketMQ
              --------disruptor:环形队列
              --------ws:长连接
+             --------cognitive:认知模型
 
 resources:
 ----------mapper:mybatis映射xml文件

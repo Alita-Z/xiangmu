@@ -4,11 +4,12 @@ import com.example.hardcoredemo.modular.cognitive.common.entity.CharParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.KonwRuleParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.TypeParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
+@Service
 public class WhyServiceImpl implements WhyInterface{
 
     @Autowired
@@ -22,13 +23,11 @@ public class WhyServiceImpl implements WhyInterface{
 
     @Override
     public Object why(WhyObject object) {
-        Object result0 = charParser.find(object.toString());
+        List<Map<String, Object>> result0 = charParser.find(object.toString());
         return why0(result0);
     }
 
-    private Object why0(Object object){
-        List<Object> beAffairs = (List<Object>) object;
-        Map beAffair = (TreeMap) beAffairs;
+    private Object why0(List<Map<String, Object>> list){
         //语义分析
 
         //rule拼装

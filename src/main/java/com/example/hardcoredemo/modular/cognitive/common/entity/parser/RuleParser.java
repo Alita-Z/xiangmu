@@ -3,6 +3,9 @@ package com.example.hardcoredemo.modular.cognitive.common.entity.parser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.obj.AbstractMetaObj;
 import lombok.Data;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 认知解析器
  */
@@ -19,7 +22,12 @@ public class RuleParser extends AbstractMetaObj {
         ruleParser.flash(true);
     }
 
-    public Object getRule(Object result0, Object result1){
+    public Object getRule(List<Map<String, Object>> result){
+
+        return this;
+    }
+
+    public Object getRule(List<Map<String, Object>> result0, List<Map<String, Object>> result1){
 
         return this;
     }

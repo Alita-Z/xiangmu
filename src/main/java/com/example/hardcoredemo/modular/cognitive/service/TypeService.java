@@ -15,4 +15,8 @@ public class TypeService {
         this.typeMapper = typeMapper;
         this.typeParser = typeParser;
     }
+
+    public Object select(Object obj){
+        return obj;
+    }
 }
