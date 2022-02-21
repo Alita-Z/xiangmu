@@ -2,10 +2,11 @@ package com.example.hardcoredemo.modular.cognitive.common.enums;
 
 public enum CognitiveEnum {
     INDEX(1,"索引值","_index"),
-    VALUE(2,"value值","_value"),
-    METHOD(3,"方法","_method"),
-    OK(4,"判断","_ok"),
-    PRECONDITIONS(5,"前置条件","_preconditions"),
+    KEY(2,"key","_key"),
+    VALUE(3,"value值","_value"),
+    METHOD(4,"方法","_method"),
+    OK(5,"判断","_ok"),
+    PRECONDITIONS(6,"前置条件","_preconditions"),
     WAIT_INSERT(10000,"待补全","_wait_insert"),
     UPDATE(20000,"更新","_update"),
     CHAR_META(30000,"char元数据","_char_meta"),

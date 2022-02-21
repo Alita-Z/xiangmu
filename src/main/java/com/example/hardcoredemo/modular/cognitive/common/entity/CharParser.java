@@ -29,7 +29,7 @@ public class CharParser extends AbstractMetaObj {
         Map<String, Object> result;
         //查询字符对应的char类型
         result = (Map) this.getValue(String.valueOf(char0));
-        //标记待补全char
+        //标记待补全char todo 补全逻辑
         if(null == result){
             result = new HashMap<>();
             result.put(CognitiveEnum.WAIT_INSERT.key, "");
