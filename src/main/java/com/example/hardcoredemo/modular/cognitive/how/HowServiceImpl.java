@@ -34,7 +34,7 @@ public class HowServiceImpl implements HowInterface {
     private Object how0(List<Map<String, Object>> list) {
         //语义分析
         List<Map<String, Object>> ruleMap = ruleService.analysis(list);
-        //根据rule查询
+        //根据语义处理数据
         Map<String, Object> selectMap = ruleService.select(ruleMap);
         //数据整理
         ruleService.format(selectMap);

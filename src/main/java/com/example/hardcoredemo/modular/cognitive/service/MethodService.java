@@ -2,12 +2,14 @@ package com.example.hardcoredemo.modular.cognitive.service;
 
 import com.example.hardcoredemo.modular.cognitive.common.entity.method.MethodParser;
 import com.example.hardcoredemo.modular.cognitive.common.enums.CognitiveEnum;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class MethodService {
 
     private volatile MethodParser methodParser;
@@ -37,31 +39,47 @@ public class MethodService {
     }
 
     //方法执行
-    public Object doing(List<Map<String, Object>> methods){
+    public Object action(List<Map<String, Object>> methods){
         Map<String, Object> result = new HashMap<>();
         for(Map<String, Object> method : methods){
-            this.doing0(result);
+            this.action0(method, result);
         }
         return result;
     }
 
-    private void doing0(Map<String, Object> result){
+    private void action0(Map<String, Object> method, Map<String, Object> result){
 
+        switch ((String) result.get(CognitiveEnum.METHOD.key)){
+            case "if":
+                if0(method, result);
+                break;
+            case "for":
+                for0(method, result);
+                break;
+            default:
+                break;
+        }
     }
 
-    public static boolean if0(Object obj1, Object obj2, String symbol){
+    public static boolean if0(Map<String, Object> method, Map<String, Object> result){
+        Object obj1 = method.get("");
+        Object obj2 = method.get("");
+        String symbol = (String) method.get("");
         if("=".equals(symbol)){
+            result.put("", obj1.equals(obj2));
             return obj1.equals(obj2);
         }
+        result.put("", false);
         return false;
     }
 
-    public static Object for0(Object obj){
-        List list = (List) obj;
-        List result = new ArrayList();
+    public static Object for0(Map<String, Object> method, Map<String, Object> result){
+        List list = (List) method.get("");
+        List forList = new ArrayList();
         for (Object obj0 : list){
-            result.add(obj0);
+            forList.add(obj0);
         }
+        result.put("", forList);
         return result;
     }
 

@@ -4,16 +4,23 @@ import com.example.hardcoredemo.modular.disruptor.SeriesData;
 import com.example.hardcoredemo.modular.disruptor.SeriesDataEventQueueHelper;
 import com.example.hardcoredemo.modular.tx.wxapplets.MessageType;
 import com.example.hardcoredemo.modular.tx.wxapplets.AppletsService;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import weka.classifiers.Evaluation;
+import weka.classifiers.misc.InputMappedClassifier;
+import weka.core.Instances;
 
+import java.io.FileReader;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @SpringBootTest(classes = HardCoreDemoApplication.class)
@@ -61,6 +68,7 @@ class HardCoreDemoApplicationTests {
 //        seriesDataEventQueueHelper.publishEvent(new SeriesData("111"));
     }
 
+    @SneakyThrows
     public static void main(String[] args) {
         List<sun> list = new ArrayList();
         list.add(new sun());list.add(new sun());list.add(new sun());list.add(new sun());
@@ -71,6 +79,16 @@ class HardCoreDemoApplicationTests {
             iterator.remove();
         }
         System.out.println(list);
+
+
+        //weka
+        InputMappedClassifier clf = new InputMappedClassifier();
+        String irisPath = Paths.get(System.getenv("WEKA_HOME"), "packages", "wekaDeeplearning4j", "datasets", "nominal", "iris.arff").toString();
+        Instances inst = new Instances(new FileReader(irisPath));
+        inst.setClassIndex(inst.numAttributes() - 1);
+        Evaluation ev = new Evaluation(inst);
+        ev.crossValidateModel(clf, inst, 10, new Random(0));
+        System.out.println(ev.toSummaryString());
     }
 
     private void tesst(List<sun> list){

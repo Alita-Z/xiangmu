@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class RuleService {
@@ -27,48 +28,72 @@ public class RuleService {
 
     private final TypeService typeService;
 
+    private final MethodService methodService;
 
-    public RuleService(RuleMapper ruleMapper, TypeService typeService) {
+
+    public RuleService(RuleMapper ruleMapper, TypeService typeService, MethodService methodService) {
         this.ruleMapper = ruleMapper;
         this.typeService = typeService;
+        this.methodService = methodService;
     }
 
     /**
      * 语义解析
-     * @param list
+     * @param params
      * @return
      */
-    public List<Map<String, Object>> analysis(List<Map<String, Object>> list){
+    public List<Map<String, Object>> analysis(List<Map<String, Object>> params){
         List<Map<String, Object>> resultList = new ArrayList<>();
-        for(int i = 0; i < list.size();){
-            Map<String, Object> map = list.get(i);
-            List<String> preconditions = new ArrayList(map.size());
-            Map<String, Object> analysis0Map = new HashMap<>();
-            for(String key : map.keySet()){
-                if(CognitiveEnum.VALUE.key.equals(key) || preconditions.contains(key))continue;
-                //递归遍历relation
-                recursion(preconditions, key, map, analysis0Map);
-                //根据charMeta拆解数据
-                Map<String, Object> params = new HashMap<>();
-                params.put(CognitiveEnum.INDEX.key, i);
-                params.put(CognitiveEnum.VALUE.key, map.get(CognitiveEnum.VALUE.key));
-                params.put(CognitiveEnum.CHAR_META.key, charParser.getMetaValue(key));
-                this.analysis0(params, analysis0Map);
-                preconditions.add(key);
-                if((boolean)analysis0Map.get(CognitiveEnum.OK.key)){
+        for(int i = 0; i < params.size();){
+            boolean next = false;
+            Map<String, Object> map = params.get(i);
+            //字符--词语转换，语义分析
+            List<Map<String, Object>> relationMap = (List<Map<String, Object>>) map.get(CognitiveEnum.THING_RELATION_KEY.key);
+            for(int j = i+1; j <params.size();){
+                Map<String, Object> afterMap = params.get(j);
+                String after = (String) afterMap.get(CognitiveEnum.VALUE.key);
+                List list = relationMap.stream().filter(r -> String.valueOf(r.get(CognitiveEnum.VALUE.key)).contains(after)).collect(Collectors.toList());
+                if(list.isEmpty()){
+                    i = j;
+                    next = true;
                     break;
+                }else {
+                    // todo 遍历出全部匹配的语义词汇
+
                 }
             }
-            //单字符解析整理
-            Map<String, Object> result = formatAnalysis(analysis0Map);
-            if(result.isEmpty()){
-                //未匹配到，标记-补充
+            if(next)continue;
 
-            }else {
-                resultList.add(result);
-            }
-            i = (int)result.get(CognitiveEnum.INDEX.key);
+
+//            List<String> preconditions = new ArrayList(map.size());
+//            Map<String, Object> analysis0Map = new HashMap<>();
+//            for(String key : map.keySet()){
+//                if(CognitiveEnum.VALUE.key.equals(key) || preconditions.contains(key))continue;
+//                //递归遍历relation
+//                recursion(preconditions, key, map, analysis0Map);
+//                //根据charMeta拆解数据
+//                Map<String, Object> params0 = new HashMap<>();
+//                params0.put(CognitiveEnum.INDEX.key, i);
+//                params0.put(CognitiveEnum.VALUE.key, map.get(CognitiveEnum.VALUE.key));
+//                params0.put(CognitiveEnum.CHAR_META.key, charParser.getMetaValue(key));
+//                this.analysis0(params0, analysis0Map);
+//                preconditions.add(key);
+//                if((boolean)analysis0Map.get(CognitiveEnum.OK.key)){
+//                    break;
+//                }
+//            }
+//            //单字符解析整理
+//            Map<String, Object> result = formatAnalysis(analysis0Map);
+//            if(result.isEmpty()){
+//                //未匹配到，标记-补充
+//
+//            }else {
+//                resultList.add(result);
+//            }
+//            i = (int)result.get(CognitiveEnum.INDEX.key);
         }
+
+        //存在歧义时 todo 语境解析
 
         return resultList;
     }
@@ -118,6 +143,8 @@ public class RuleService {
      */
     private void analysis0(Map<String, Object> params, Map<String, Object> analysis0Map){
         Map<String, Object> charMeta = (Map<String, Object>) params.get(CognitiveEnum.CHAR_META.key);
+        List<Map<String, Object>> methods = methodService.select((String) charMeta.get(CognitiveEnum.METHOD.key));
+        Map<String, Object> result = (Map<String, Object>) methodService.action(methods);
         switch ((String) charMeta.get(CognitiveEnum.METHOD.key)){
             case "":
                 ambiguity(params,analysis0Map);
@@ -135,6 +162,7 @@ public class RuleService {
     private void ambiguity(Map<String, Object> obj, Map<String, Object> result){
 
     }
+
 
     public Map<String, Object> select(List<Map<String, Object>> list){
         Map<String, Object> result = new HashMap<>();

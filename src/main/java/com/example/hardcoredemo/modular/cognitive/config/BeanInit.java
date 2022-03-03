@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.hardcoredemo.common.utils.ApplicationContextProvider;
 import com.example.hardcoredemo.modular.cognitive.common.entity.CharParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.KonwRuleParser;
+import com.example.hardcoredemo.modular.cognitive.common.entity.method.MethodParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.parser.RuleParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.TypeParser;
 import org.springframework.context.annotation.Bean;
@@ -34,5 +35,13 @@ public class BeanInit {
         TypeParser typeParser = (TypeParser) JSON.parseArray(typeDB, TypeParser.class);
         typeParser.init(typeParser);
         return typeParser;
+    }
+
+    @Bean
+    public MethodParser methodInit(){
+        String methodDB = ApplicationContextProvider.getBean("MethodMapper").toString();
+        MethodParser methodParser = (MethodParser) JSON.parseArray(methodDB, MethodParser.class);
+        methodParser.init(methodParser);
+        return methodParser;
     }
 }

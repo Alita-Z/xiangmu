@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * 人认知解析器
+ * @desc 认知维度的模型定义
  */
 @Data
 public class KonwRuleParser extends RuleParser {

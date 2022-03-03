@@ -9,6 +9,7 @@ import java.util.*;
 
 /**
  * 字符解析器
+ * @desc 全(人类字符&机器字符)转换定义
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
