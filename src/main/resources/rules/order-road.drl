@@ -1,0 +1,36 @@
+//package rules
+//import com.example.hardcoredemo.modular.drools.*
+//
+////规则1：100元以下, 不加分
+//rule "road_1"
+//when
+//    $r : Road(begin == $c.begin)
+//    $c : Car()
+//then
+//    $c.getRoads().add($r.getEnds());
+//    update($c);
+//    System.out.println("开始节点");
+//end
+
+//规则2：100元-500元 加100分
+//rule "road_2"
+//when
+//    $r : Road(begin != $c.begin , $c.roads contains begin)
+//    $c : Car()
+//    accumulate()
+//    eval($c.begin.equals($r.begin + $r.ends))
+//then
+//    $c.getRoads().add($r.getEnds());
+//    update($c);
+//    System.out.println("过程");
+//end
+
+//规则2：100元-500元 加100分
+//rule "road_3"
+//when
+//        $r : Road(ends == $c.ends)
+//        $c : Car()
+//then
+//    $c.getRoads().add($r.getEnds());
+//    System.out.println("结束节点");
+//end

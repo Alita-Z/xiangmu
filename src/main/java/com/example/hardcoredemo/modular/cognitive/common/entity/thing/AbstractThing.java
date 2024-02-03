@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class AbstractThing extends Thing {
 
+    private String code;
     private ThingType type;
     private ThingConcept concept;
     private ThingRelationship relationship;

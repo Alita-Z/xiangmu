@@ -18,6 +18,11 @@ public class MethodService {
         this.methodParser = methodParser;
     }
 
+    //新增方法
+    public void add(Object param){
+
+    }
+
     //方法查询
     public List<Map<String, Object>> select(String name){
         List<Map<String, Object>> result = new ArrayList<>();

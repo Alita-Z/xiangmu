@@ -1,10 +1,10 @@
-package com.example.hardcoredemo.modular.cognitive.how;
+package com.example.hardcoredemo.modular.cognitive.answer;
 
 import lombok.Data;
 
 
 @Data
-public class HowObject {
+public class AnswerObject {
 
     private Object rule1;
 

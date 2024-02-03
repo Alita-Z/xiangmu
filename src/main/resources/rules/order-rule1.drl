@@ -1,0 +1,46 @@
+package rules
+import com.example.hardcoredemo.modular.drools.Order
+
+//规则1：100元以下, 不加分
+rule "score_5"
+when
+    $s : Order(amout <= 100)
+then
+    $s.setScore(8);
+    System.out.println("成功匹配到规则1：100元以下, 不加分 ");
+end
+
+//规则2：100元-500元 加100分
+rule "score_6"
+when
+    $s : Order(amout > 100 && amout <= 500)
+then
+    $s.setScore(108);
+    System.out.println("成功匹配到规则2：100元-500元 加100分 ");
+end
+
+//规则3：500元-1000元 加500分
+rule "score_7"
+//ruleflow-group "test-rule1"
+//date-effective "2023-02-20"
+//date-expires "2021-06-20"
+//no-loop true
+when
+    $s : Order(amout > 500 && amout <= 1000)
+then
+    $s.setScore(508);
+    $s.setAmout($s.getAmout() + 2);
+//    update($s)
+//    retract($s)
+//    drools.halt();
+    System.out.println("成功匹配到规则3：500元-1000元 加500分 ");
+end
+
+//规则4：1000元 以上 加1000分
+rule "score_8"
+when
+    $s : Order(amout > 1000)
+then
+    $s.setScore(1008);
+    System.out.println("成功匹配到规则4：1000元 以上 加1000分 ");
+end

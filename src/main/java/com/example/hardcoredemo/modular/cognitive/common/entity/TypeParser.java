@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class TypeParser extends AbstractMetaObj {
 
-    public Object find(){
+    public Object find(String id){
         return new Object();
     }
 

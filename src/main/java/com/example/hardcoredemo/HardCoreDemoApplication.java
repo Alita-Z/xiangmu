@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableAutoConfiguration
 @ServletComponentScan
-@ComponentScan(basePackages = "com.example.hardcoredemo")
+@ComponentScan(basePackages = {"com.example.hardcoredemo.modular.drools"})
 @MapperScan("com.example.hardcoredemo.dao")
 @EnableTransactionManagement
 @EnableAsync

@@ -28,7 +28,7 @@ public class ShardingServiceImpl implements ShardingService{
     /**
      * 分布式事务BASE
      */
-//    @Transactional(rollbackFor = RuntimeException.class)
+//    1ransactional(rollbackFor = RuntimeException.class)
 //    @ShardingTransactionType(TransactionType.BASE)
 //    public void transactionalBASE(){
 //        HintManager hintManager = HintManager.getInstance();

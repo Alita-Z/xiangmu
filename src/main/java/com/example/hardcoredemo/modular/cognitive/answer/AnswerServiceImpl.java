@@ -1,4 +1,4 @@
-package com.example.hardcoredemo.modular.cognitive.how;
+package com.example.hardcoredemo.modular.cognitive.answer;
 
 import com.example.hardcoredemo.modular.cognitive.common.entity.CharParser;
 import com.example.hardcoredemo.modular.cognitive.common.entity.KonwRuleParser;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class HowServiceImpl implements HowInterface {
+public class AnswerServiceImpl implements AnswerInterface {
 
     @Autowired
     private volatile KonwRuleParser ruleParser;
@@ -26,12 +26,12 @@ public class HowServiceImpl implements HowInterface {
     private RuleService ruleService;
 
     @Override
-    public Object how(HowObject object) {
+    public Object answer(AnswerObject object) {
         List<Map<String, Object>> result0 = charParser.find(object.toString());
-        return this.how0(result0);
+        return this.answer0(result0);
     }
 
-    private Object how0(List<Map<String, Object>> list) {
+    private Object answer0(List<Map<String, Object>> list) {
         //语义分析
         List<Map<String, Object>> ruleMap = ruleService.analysis(list);
         //根据语义处理数据

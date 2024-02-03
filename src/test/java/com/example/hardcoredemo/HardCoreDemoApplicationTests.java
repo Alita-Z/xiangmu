@@ -7,21 +7,26 @@ import com.example.hardcoredemo.modular.tx.wxapplets.AppletsService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import sun.tools.jar.Main;
 import weka.classifiers.Evaluation;
 import weka.classifiers.misc.InputMappedClassifier;
 import weka.core.Instances;
 
 import java.io.FileReader;
+import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.lang.invoke.MethodHandles.lookup;
 
 @SpringBootTest(classes = HardCoreDemoApplication.class)
 @RunWith(SpringRunner.class)
@@ -40,6 +45,9 @@ class HardCoreDemoApplicationTests {
 
     @Test
     void test(){
+        System.out.println(enumss.female);
+        RedissonClient redissonClient;
+        RLock lock;
 //        List<sun> list = new ArrayList<>();
 //        tesst(list);
 //        sun.excute();
@@ -59,6 +67,7 @@ class HardCoreDemoApplicationTests {
 //        sun.excute();
         /**
          * 微信消息推送
+         *
          */
 //        service.publishMessage("", MessageType.formatPAY("","",""), MessageType.PAY);
 //        service.publishMessagePlus(new ArrayList<>(), MessageType.formatPAY("","",""), MessageType.PAY);
@@ -70,6 +79,17 @@ class HardCoreDemoApplicationTests {
 
     @SneakyThrows
     public static void main(String[] args) {
+        try{
+
+        }catch (Exception e){
+
+        }finally {
+
+        }
+
+
+        MethodHandles.lookup();
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         List<sun> list = new ArrayList();
         list.add(new sun());list.add(new sun());list.add(new sun());list.add(new sun());
         System.out.println(list);
@@ -91,25 +111,6 @@ class HardCoreDemoApplicationTests {
         System.out.println(ev.toSummaryString());
     }
 
-    private void tesst(List<sun> list){
-        if(false){
 
-        }else {
-            tesstt(list);
-        }
-    }
-    private void tesstt(List<sun> list){
-        sun sun = new sun();
-        sun.name = "111";
-        List<sun> list1 = new ArrayList<>();
-        list1.add(sun);
-        list.addAll(list1);
-        list1.forEach(s -> {
-            s.name = "333";
-            father father = new father();
-            father.name = s.name;
-            s.list.add(father);
-        });
-        list.forEach(ss -> ss.name = "222");
-    }
+
 }
